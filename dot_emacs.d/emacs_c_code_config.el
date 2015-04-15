@@ -57,12 +57,21 @@
 ;; But if i use the require technique it does not shoot out error...
 
 ;; Function-args: showing an inline arguments hint for the C/C++ function at point.
+
+;; (with-library-for-c function-args
+;;   (fa-config-default)
+;;   (define-key c-mode-map  [(control tab)] 'moo-complete)
+;;   (define-key c++-mode-map  [(control tab)] 'moo-complete)
+;;   (define-key c-mode-map (kbd "M-o")  'fa-show)
+;;   (define-key c++-mode-map (kbd "M-o")  'fa-show))
+
 (with-library-for-c function-args
   (fa-config-default)
-  (define-key c-mode-map  [(control tab)] 'moo-complete)
-  (define-key c++-mode-map  [(control tab)] 'moo-complete)
-  (define-key c-mode-map (kbd "M-o")  'fa-show)
-  (define-key c++-mode-map (kbd "M-o")  'fa-show))
+  (define-key map  [(tab)] 'moo-complete)
+  ;;(eval-after-load 'c-mode '(define-key c-mode-map [tab] 'outline-cycle))
+  ;;(define-key c-mode-map  [C-tab] 'moo-complete)
+  ;;(define-key c++-mode-map  [C-tab] 'moo-complete)
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
