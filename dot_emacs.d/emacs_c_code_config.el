@@ -101,5 +101,38 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; hs-minor-mode: fold and hide blocks
+
+(add-hook 'c-mode-hook 'hs-minor-mode)
+(add-hook 'c++-mode-hook ''hs-minor-mode)
+
+;; NOTES about hs-minor-mode:
+;;
+;; Main shortcuts:
+;; C-c @ C-h: hide a block
+;; C-c @ C-s: show a block
+;; C-c @ C-M-s: show all blocks
+;; C-c @ C-l: hide level
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; sr_speedbar: speedbar in console (not in frame)
+
+(with-library-for-c sr-speedbar
+  (setq speedbar-show-unknown-files t)
+  )
+
+;; NOTES about sr_speedbar
+;;
+;; Main shortcuts:
+;; M-x sr-speedbar-toggle
+;; SPC open/close children of a node
+;; RET to open
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (with-library-for-c yasnippet)

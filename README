@@ -1,0 +1,20 @@
+TODO list:
+
+[e]  * sr_speedbar: speedbar in console (not in frame)
+
+     * EDE: project manager, improve auto completion.
+       EDE enables semantics to find sources & perform project level compilation
+
+     * company-c-header: auto completion for headers
+
+     * check global-semantic-idle-summary-mode
+
+     * narrowing:
+
+     * indentation:
+
+     * yasnippet: function templates
+
+     * compilation support:
+
+     * debugging and gdb integration:
