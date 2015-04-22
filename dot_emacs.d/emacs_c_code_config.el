@@ -104,7 +104,7 @@
 ;; hs-minor-mode: fold and hide blocks
 
 (add-hook 'c-mode-hook 'hs-minor-mode)
-(add-hook 'c++-mode-hook ''hs-minor-mode)
+(add-hook 'c++-mode-hook 'hs-minor-mode)
 
 ;; NOTES about hs-minor-mode:
 ;;
@@ -135,4 +135,24 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(with-library-for-c yasnippet)
+;; company-c-header: auto completion for headers
+
+(with-library-for-c company-c-headers
+  (add-to-list 'company-backends 'company-c-headers)
+  )
+
+;; NOTES: about company-c-header
+;;
+;; Add library path with the following:
+;; (add-to-list 'company-c-headers-path-system "/usr/include/c++/4.8/")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; yasnippet: function templates
+
+(with-library-for-c yasnippet
+  (add-hook 'c-mode-hook 'yas-global-mode)
+  (add-hook 'c++-mode-hook 'yas-global-mode)
+  )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

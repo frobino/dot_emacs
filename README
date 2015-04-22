@@ -1,20 +1,33 @@
 TODO list:
 
-[e]  * sr_speedbar: speedbar in console (not in frame)
+     X sr_speedbar: speedbar in console (not in frame)
 
-     * EDE: project manager, improve auto completion.
+     ? EDE: project manager, improve auto completion.
        EDE enables semantics to find sources & perform project level compilation
 
-     * company-c-header: auto completion for headers
+     * ECB: IDE 
+       NOTE: I tried EDE but it seems slow and not fully supported on all platforms, 
+       e.g. troubles with cygwin, see ecb FAQ. Suspended for the moment.        
+
+     X company-c-header: auto completion for headers
 
      * check global-semantic-idle-summary-mode
 
-     * narrowing:
+     * narrowing: making only a text portion in current buffer visible.
+     Narrowing is useful when you want to perform text editing on a small part of
+     the buffer without affecting the others. For example, you want to delete
+     all printf statements in current functions, using flush-lines command. 
 
      * indentation:
 
-     * yasnippet: function templates
+     X yasnippet: function templates
 
      * compilation support:
 
      * debugging and gdb integration:
+
+     * helm-gtags / ggtags: source code navigation through TAGS 
+
+     * undo-tree
+
+     * smartparens-config
