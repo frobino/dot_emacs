@@ -22,7 +22,7 @@ TODO list:
 
      X yasnippet: function templates
 
-     * compilation support:
+     X compilation support:
 
      * debugging and gdb integration:
 
@@ -30,4 +30,4 @@ TODO list:
 
      * undo-tree
 
-     * smartparens-config
+     X smartparens-config
