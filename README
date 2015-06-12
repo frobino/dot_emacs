@@ -26,7 +26,9 @@ TODO list:
 
      * debugging and gdb integration:
 
-     * helm-gtags / ggtags: source code navigation through TAGS 
+     X ggtags: source code navigation through TAGS 
+
+     * helm-gtags: source code navigation through TAGS 
 
      * undo-tree
 
