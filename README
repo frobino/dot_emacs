@@ -1,11 +1,11 @@
-TODO list:
+TODO list (X = done, ? = suspended, * = to be done):
 
      X sr_speedbar: speedbar in console (not in frame)
 
      ? EDE: project manager, improve auto completion.
        EDE enables semantics to find sources & perform project level compilation
 
-     * ECB: IDE 
+     ? ECB: IDE 
        NOTE: I tried EDE but it seems slow and not fully supported on all platforms, 
        e.g. troubles with cygwin, see ecb FAQ. Suspended for the moment.        
 
@@ -30,6 +30,13 @@ TODO list:
 
      * helm-gtags: source code navigation through TAGS 
 
-     * undo-tree
+     * undo-tree:
+       a MUST for all projects. Should be always active
+       C-_ M-_ : do/undo
+       C-x u   : open undo tree, navigate with arrows
 
      X smartparens-config
+
+     X golden-ratio: automatically adjust window size
+       NOTE: not added in .el file. If needed, install through pkg-mng and
+       activate with M-x golden-ratio-mode
