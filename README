@@ -40,3 +40,9 @@ TODO list (X = done, ? = suspended, * = to be done):
      X golden-ratio: automatically adjust window size
        NOTE: not added in .el file. If needed, install through pkg-mng and
        activate with M-x golden-ratio-mode
+
+Main sources:
+
+     * http://tuhdo.github.io/c-ide.html: tutorial with explanations
+     * https://github.com/tuhdo/emacs-c-ide-demo: elisp files from previous link
+     * https://github.com/tuhdo/c-demo-project: C demo project
