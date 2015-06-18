@@ -1,15 +1,30 @@
+TODO NEXT:
+     - EDE
+     - el for always used pakages, eg undo tree and golden
+     - howto remove yas messages?
+
 TODO list (X = done, ? = suspended, * = to be done):
 
      X sr_speedbar: speedbar in console (not in frame)
+       Main shortcuts:
+       M-x sr-speedbar-toggle
+       SPC open/close children of a node
+       RET to open
 
      ? EDE: project manager, improve auto completion.
        EDE enables semantics to find sources & perform project level compilation
+
+       THIS IS THE NEXT STEP! IMPORTANT TO USE SEMANTIcS!
 
      ? ECB: IDE 
        NOTE: I tried EDE but it seems slow and not fully supported on all platforms, 
        e.g. troubles with cygwin, see ecb FAQ. Suspended for the moment.        
 
      X company-c-header: auto completion for headers
+       NOTES: about company-c-header
+       Use writing #include < then tab_
+       Add library path with the following:
+       (add-to-list 'company-c-headers-path-system "/usr/include/c++/4.8/")
 
      * check global-semantic-idle-summary-mode
 
@@ -21,12 +36,15 @@ TODO list (X = done, ? = suspended, * = to be done):
      * indentation:
 
      X yasnippet: function templates
+       NOTE: use a shortcut such as for then tab
 
      X compilation support:
+       F5
 
      * debugging and gdb integration:
 
-     X ggtags: source code navigation through TAGS 
+     X ggtags: source code navigation through TAGS
+       Run gtags in folder, M-, and M-.
 
      * helm-gtags: source code navigation through TAGS 
 
