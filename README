@@ -11,8 +11,10 @@ TODO list (X = done, ? = suspended, * = to be done):
        SPC open/close children of a node
        RET to open
 
-     ? EDE: project manager, improve auto completion.
-       EDE enables semantics to find sources & perform project level compilation
+     ? EDE: project manager, improve auto completion. Usually pre installed, no need for package install.
+       EDE enables semantics to find sources & perform project level compilation.
+       C-x C-e activates ede to load the cedet-project.el file
+       The technique shown on the tutorial seems not to work.
 
        THIS IS THE NEXT STEP! IMPORTANT TO USE SEMANTIcS!
 
