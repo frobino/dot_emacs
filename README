@@ -1,6 +1,6 @@
 TODO NEXT:
      - EDE
-     - el for always used pakages, eg undo tree and golden
+     - understand why some of the autocomplete techniques give troubles
      - howto remove yas messages?
 
 TODO list (X = done, ? = suspended, * = to be done):
@@ -11,12 +11,11 @@ TODO list (X = done, ? = suspended, * = to be done):
        SPC open/close children of a node
        RET to open
 
-     ? EDE: project manager, improve auto completion. Usually pre installed, no need for package install.
+     X EDE: project manager, improve auto completion. Usually pre installed, no need for package install.
        EDE enables semantics to find sources & perform project level compilation.
        C-x C-e activates ede to load the cedet-project.el file
-       The technique shown on the tutorial seems not to work.
-
-       THIS IS THE NEXT STEP! IMPORTANT TO USE SEMANTIcS!
+       Otherwise M-x load-file RET /path/to/myproject.el containing ede-cpp-root-project
+       Required to be started from .emacs file to expand semantics parser!
 
      ? ECB: IDE 
        NOTE: I tried EDE but it seems slow and not fully supported on all platforms, 
@@ -50,7 +49,7 @@ TODO list (X = done, ? = suspended, * = to be done):
 
      * helm-gtags: source code navigation through TAGS 
 
-     * undo-tree:
+     X undo-tree:
        a MUST for all projects. Should be always active
        C-_ M-_ : do/undo
        C-x u   : open undo tree, navigate with arrows

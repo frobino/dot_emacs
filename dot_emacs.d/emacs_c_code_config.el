@@ -30,6 +30,21 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Undo tree mode
+
+(with-library-for-c ede
+  (global-ede-mode)
+  )
+
+;; NOTEs:
+;;
+;; Use to load .el file containing "ede-cpp-root-project" and expand semantics parsing
+;; folders.
+;;
+;; MUST BE ENABLED ON STARTUP TO EXPAND SEMANTICS PARSER!
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; Autocompletion with CEDET and semantics mode
 (with-library-for-c semantic
   (add-hook 'c-mode-hook 'global-semanticdb-minor-mode)
