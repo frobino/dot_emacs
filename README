@@ -16,6 +16,8 @@ TODO list (X = done, ? = suspended, * = to be done):
        C-x C-e activates ede to load the cedet-project.el file
        Otherwise M-x load-file RET /path/to/myproject.el containing ede-cpp-root-project
        Required to be started from .emacs file to expand semantics parser!
+       NOTE: cedet-project.el does NOT need to be in a specific folder (e.g. .emacs.d/),
+             but it can be in any folder, also the project folder!
 
      ? ECB: IDE 
        NOTE: I tried EDE but it seems slow and not fully supported on all platforms, 
