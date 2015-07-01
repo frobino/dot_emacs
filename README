@@ -1,9 +1,23 @@
 TODO NEXT:
-     - EDE
      - understand why some of the autocomplete techniques give troubles
      - howto remove yas messages?
+     - ctags better parser (make your own rules) to tag also constants, etc.
+     - write a proper readme, describing steps for browsing c and vhdl code. 
 
 TODO list (X = done, ? = suspended, * = to be done):
+
+     ALL CODE MODE (emacs_all_code_config.el):
+
+     X undo-tree:
+       a MUST for all projects. Should be always active
+       C-_ M-_ : do/undo
+       C-x u   : open undo tree, navigate with arrows
+
+     X golden-ratio: automatically adjust window size
+       NOTE: not added in .el file. If needed, install through pkg-mng and
+       activate with M-x golden-ratio-mode
+
+     C CODE MODE (emacs_c_code_config.el):
 
      X sr_speedbar: speedbar in console (not in frame)
        Main shortcuts:
@@ -51,17 +65,18 @@ TODO list (X = done, ? = suspended, * = to be done):
 
      * helm-gtags: source code navigation through TAGS 
 
-     X undo-tree:
-       a MUST for all projects. Should be always active
-       C-_ M-_ : do/undo
-       C-x u   : open undo tree, navigate with arrows
-
      X smartparens-config
 
-     X golden-ratio: automatically adjust window size
-       NOTE: not added in .el file. If needed, install through pkg-mng and
-       activate with M-x golden-ratio-mode
+     VHDL CODE MODE (emacs_vhdl_code_config.el):
 
+     X ctags support:
+     Similar to gtags for navigating C code, we use ctags (a.k.a. etags or Exuberant Ctags)
+     to create a TAGS file helping to browse our vhdl code. The .el file is not a library,
+     but implements some useful functions.
+     Browsing VHDL:
+     M-. to find the entity declaration of an instantiated component (TOP DOWN).
+     ctags-search (from the entity declaration) to find the place in code where it is istantiated (BOTTOM UP). 
+     
 Main sources:
 
      * http://tuhdo.github.io/c-ide.html: tutorial with explanations

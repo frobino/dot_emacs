@@ -16,7 +16,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (with-library-for-all undo-tree
-  (undo-tree-mode)
+  (global-undo-tree-mode)
   )
 
 ;; NOTEs:
