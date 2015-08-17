@@ -76,7 +76,8 @@ TODO list (X = done, ? = suspended, * = to be done):
      Run the following command in the top folder containing your project: ctags -e -R . 
      Browsing VHDL:
      M-. to find the entity declaration of an instantiated component (TOP DOWN).
-     ctags-search (from the entity declaration) to find the place in code where it is istantiated (BOTTOM UP). 
+     ctags-search (from the entity declaration) to find the place in code where it is istantiated (BOTTOM UP). Continue search trough ETAGS through M-,
+     TODO: find a technique similar to occur (M-s o) instead of M-, continuously (or rgrep)
      
 Main sources:
 
