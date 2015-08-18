@@ -35,6 +35,18 @@
 (global-set-key (kbd "<f7>") 'switch-to-minibuffer-window)
 
 ;;
+;; grep and find for Windows - uncomment the following:
+;; (when (or (eq system-type 'windows-nt) (eq system-type 'msdos))
+;;    (setenv "PATH" (concat "C:\\GNU\\gnuwin32\\bin;" (getenv "PATH")))
+;;    (setq find-program "E:\\cygwin64\\bin\\find.exe"
+;;          grep-program "E:\\cygwin64\\bin\\grep.exe"))
+;;
+;; if the folder containing exe files contains spaces:
+;; (setq find-program "C:\\\"Program Files (x86)\"\\GnuWin32\\bin\\find.exe"
+;;  grep-program "C:\\\"Program Files (x86)\"\\GnuWin32\\bin\\grep.exe")
+;;
+
+;;
 ;; General code configuration (always active)
 ;;
 
