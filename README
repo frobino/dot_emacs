@@ -73,7 +73,8 @@ TODO list (X = done, ? = suspended, * = to be done):
      Similar to gtags for navigating C code, we use ctags (a.k.a. etags or Exuberant Ctags)
      to create a TAGS file helping to browse our vhdl code. The .el file is not a library,
      but implements some useful functions. 
-     Run the following command in the top folder containing your project: ctags -e -R . 
+     Run the following command in the top folder containing your project: 
+     ctags -e -R --languages=vhdl . 
      Browsing VHDL:
      M-. to find the entity declaration of an instantiated component (TOP DOWN).
      ctags-search (from the entity declaration) to find the place in code where it is istantiated (BOTTOM UP). Continue search trough ETAGS through M-,
