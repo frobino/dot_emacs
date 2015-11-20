@@ -79,7 +79,13 @@ TODO list (X = done, ? = suspended, * = to be done):
      M-. to find the entity declaration of an instantiated component (TOP DOWN).
      ctags-search (from the entity declaration) to find the place in code where it is istantiated (BOTTOM UP). Continue search trough ETAGS through M-,
      TODO: find a technique similar to occur (M-s o) instead of M-, continuously (or rgrep)
-     
+
+     C# CODE MODE
+
+     * evaluate csharp-mode
+
+     * look at http://www.emacswiki.org/emacs/CSharpMode and consider Flymake, RFringe, HideShow (to be extendend to C mode? ) and Omnisharp
+
 Main sources:
 
      * http://tuhdo.github.io/c-ide.html: tutorial with explanations
