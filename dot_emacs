@@ -63,3 +63,9 @@
 ;;
 
 (add-hook 'vhdl-mode-hook (lambda () (load "~/.emacs.d/emacs_vhdl_code_config")))
+
+;;
+;; HASKELL code configuration
+;;
+
+(load "~/.emacs.d/emacs_haskell_code_config") ;; emacs_haskell_code_config.el
