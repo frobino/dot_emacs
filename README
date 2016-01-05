@@ -32,6 +32,19 @@ TODO list (X = done, ? = suspended, * = to be done):
        Required to be started from .emacs file to expand semantics parser!
        NOTE: cedet-project.el does NOT need to be in a specific folder (e.g. .emacs.d/),
              but it can be in any folder, also the project folder!
+             
+     X Semantics: auto completion #1 with active parser
+       It is already included in all new version of emacs. 
+       As default, it parses and autocomplete only the current file. To specify where headers and other files are, 
+       we must load an ede project first which specifies (at least) the root folder. <--- !
+       To autocomplete the classic functions (such as printf from stdio):
+       WIN: semantic-add-system-include "e:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/include"
+       Look in semantic-dependency-system-include-path variable which path are included for the system libraries
+       
+     X Company with different backends (semantic, clang, gtags,...): auto completion #2
+       semantic : ok if config semantic
+       clang: requires clang installed in PATH
+       ...
 
      ? ECB: IDE 
        NOTE: I tried EDE but it seems slow and not fully supported on all platforms, 
