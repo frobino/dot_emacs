@@ -35,7 +35,13 @@
 (with-library-for-c ede
   (add-hook 'c-mode-hook 'global-ede-mode)
   (add-hook 'c++-mode-hook 'global-ede-mode)
+  (defun ede-new-project (prj_top_folder)
+    ;; source: http://ergoemacs.org/emacs/elisp_basics.html
+    ;; (interactive "sEnter project top folder: ")
+    (interactive (list (read-directory-name "What directory? ")))
+    (copy-file "~/.emacs.d/cedet-projects.el" prj_top_folder)
   )
+)
 
 ;; NOTEs:
 ;;
