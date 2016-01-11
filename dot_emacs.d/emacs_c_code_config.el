@@ -105,7 +105,15 @@
   (add-hook 'c++-mode-hook
 	    (lambda() (define-key c++-mode-map (kbd "<backtab>") 'company-complete))
 	    )
+  
+  (defun company-clang-project (prj_top_folder)
+    ;; source: http://ergoemacs.org/emacs/elisp_basics.html
+    ;; (interactive "sEnter project top folder: ")
+    (interactive (list (read-directory-name "What directory? ")))
+    (copy-file "~/.emacs.d/dot_dir_locals.el" prj_top_folder)
+    (rename-file (concat prj_top_folder "dot_dir_locals.el") ".dir.locals.el")
   )
+)
 
 ;; NOTES about company:
 ;;
