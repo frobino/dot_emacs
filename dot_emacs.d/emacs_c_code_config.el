@@ -77,12 +77,22 @@
 ;; Autocompletion with company mode using semantics as backend
 
 (with-library-for-c company
-  (add-hook 'after-init-hook 'global-company-mode)
+  ;; (add-hook 'after-init-hook 'global-company-mode)
+  (add-hook 'c-mode-hook 'global-company-mode)
+  (add-hook 'c++-mode-hook 'global-company-mode)
   ;; NOTE: the following "delete" is not necessary if we target the CEDET semantic backend.
   ;; If we want to use the clang (or others backend) we have to delete company-semantic,
   ;; otherwise company-complete will use company-semantic instead of company-clang,
-  ;; because it has higher precedence in company-backends.  
-  (delete 'company-semantic company-backends)
+  ;; because it has higher precedence in company-backends.
+  ;; (delete 'company-semantic company-backends)
+  (add-hook 'c-mode-hook
+	    (lambda() (delete 'company-semantic company-backends))
+	    )
+  (add-hook 'c++-mode-hook
+	    (lambda() (delete 'company-semantic company-backends))
+	    )
+
+  
   (add-hook 'c-mode-hook
 	    (lambda() (define-key c-mode-map (kbd "<backtab>") 'company-complete))
 	    )
