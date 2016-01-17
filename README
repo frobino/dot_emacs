@@ -78,6 +78,8 @@ TODO list (X = done, ? = suspended, * = to be done):
 
      * helm-gtags: source code navigation through TAGS 
 
+     * check https://sites.google.com/site/taubkfet/tutorials/settingupac11developmentenvironmentonlinuxwithclangandemacs for flymake and other modes
+
      X smartparens-config
 
      VHDL CODE MODE (emacs_vhdl_code_config.el):
