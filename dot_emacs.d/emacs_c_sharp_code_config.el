@@ -75,5 +75,9 @@
 
 ;; Omnisharp
 ;; Provides smart completion, refactoring, finding implementations/usages, eldoc integration and more
+;; Requires omnisharp-server (https://github.com/OmniSharp/omnisharp-server) to be installed and run in the background.
+;; E.g. OmniSharp.exe -s path/to/solution
+;; Requires curl in the path.
+;; Follow the desccription in http://www.slideshare.net/DanielKOBINA/omnisharp-up-and-running to configure.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
