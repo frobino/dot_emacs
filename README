@@ -61,7 +61,8 @@ TODO list (X = done, ? = suspended, * = to be done):
      * narrowing: making only a text portion in current buffer visible.
      Narrowing is useful when you want to perform text editing on a small part of
      the buffer without affecting the others. For example, you want to delete
-     all printf statements in current functions, using flush-lines command. 
+     all printf statements in current functions, using flush-lines command.
+     Check also HideShow (see csharp)
 
      * indentation:
 
