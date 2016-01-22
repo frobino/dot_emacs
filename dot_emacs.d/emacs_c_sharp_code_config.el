@@ -80,4 +80,13 @@
 ;; Requires curl in the path.
 ;; Follow the desccription in http://www.slideshare.net/DanielKOBINA/omnisharp-up-and-running to configure.
 
+(with-library-for-c omnisharp
+  (add-hook 'csharp-mode-hook 'omnisharp-mode)
+  (setq omnisharp--curl-executable-path "E:/Program Files/curl/curl.exe")
+  (setq omnisharp-server-executable-path "E:/Program Files/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
+  ;; (defvar omnisharp-server-executable-path "E:/Program Files/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
+  ;;'(omnisharp-server-executable-path "E:/Program Files/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
+  )
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
