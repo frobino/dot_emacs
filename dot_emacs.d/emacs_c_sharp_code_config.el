@@ -80,13 +80,67 @@
 ;; Requires curl in the path.
 ;; Follow the desccription in http://www.slideshare.net/DanielKOBINA/omnisharp-up-and-running to configure.
 
+;; Company-mode autocompletion configuration
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-omnisharp))
+
+;; Additonal configurations for omnisharp-mode 
 (with-library-for-c omnisharp
   (add-hook 'csharp-mode-hook 'omnisharp-mode)
+  ;; Curl MUST be installed to run omnisharp server. 
   (setq omnisharp--curl-executable-path "E:/Program Files/curl/curl.exe")
+  ;; The omnisharp-server MUST be installed to use omnisharp-mode (https://github.com/OmniSharp/omnisharp-server)
   (setq omnisharp-server-executable-path "E:/Program Files/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
   ;; (defvar omnisharp-server-executable-path "E:/Program Files/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
   ;;'(omnisharp-server-executable-path "E:/Program Files/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
-  )
 
+  ;; Remove tabs from indentation
+  (setq-default indent-tabs-mode nil)
+
+  ;; Activate company mode for company-mode autocompletion
+  ;; NOTE: Pressing F1 with a candidate selected in the the company-mode popup shows a buffer with documentation.
+  (add-hook 'csharp-mode-hook 'global-company-mode)
+  ;; yas minor mode required for autocomplete of an object methods
+  (add-hook 'csharp-mode-hook 'yas-minor-mode)
+  
+  ;; The following is adapted from https://github.com/OmniSharp/omnisharp-emacs/blob/master/example-config-for-evil-mode.el
+  (define-key omnisharp-mode-map (kbd "<backtab>") 'omnisharp-auto-complete)
+  (define-key omnisharp-mode-map (kbd "<f12>") 'omnisharp-go-to-definition)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd "g u") 'omnisharp-find-usages)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd "g I") 'omnisharp-find-implementations) ; g i is taken
+  ;;    (define-key 'normal omnisharp-mode-map (kbd "g o") 'omnisharp-go-to-definition)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd "g r") 'omnisharp-run-code-action-refactoring)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd "g f") 'omnisharp-fix-code-issue-at-point)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd "g F") 'omnisharp-fix-usings)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd "g R") 'omnisharp-rename)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd ", i") 'omnisharp-current-type-information)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd ", I") 'omnisharp-current-type-documentation)
+  ;;    (define-key 'insert omnisharp-mode-map (kbd ".") 'omnisharp-add-dot-and-auto-complete)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd ", n t") 'omnisharp-navigate-to-current-file-member)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd ", n s") 'omnisharp-navigate-to-solution-member)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd ", n f") 'omnisharp-navigate-to-solution-file-then-file-member)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd ", n F") 'omnisharp-navigate-to-solution-file)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd ", n r") 'omnisharp-navigate-to-region)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd "<f12>") 'omnisharp-show-last-auto-complete-result)
+  ;;    (define-key 'insert omnisharp-mode-map (kbd "<f12>") 'omnisharp-show-last-auto-complete-result)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd ",.") 'omnisharp-show-overloads-at-point)
+  ;;    (define-key 'normal omnisharp-mode-map (kbd ",rl") 'recompile)
+  ;;  
+  ;;    (define-key 'normal omnisharp-mode-map (kbd ",rt")
+  ;;      (lambda() (interactive) (omnisharp-unit-test "single")))
+  ;;  
+  ;;    (define-key 'normal omnisharp-mode-map
+  ;;      (kbd ",rf")
+  ;;      (lambda() (interactive) (omnisharp-unit-test "fixture")))
+  ;;  
+  ;;    (define-key 'normal omnisharp-mode-map
+  ;;      (kbd ",ra")
+  ;;      (lambda() (interactive) (omnisharp-unit-test "all")))
+  ;;  
+  ;;    ;; Speed up auto-complete on mono drastically. This comes with the
+  ;;    ;; downside that documentation is impossible to fetch.
+  ;;    (setq omnisharp-auto-complete-want-documentation nil)
+  
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
