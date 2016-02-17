@@ -141,6 +141,9 @@
   ;;    ;; downside that documentation is impossible to fetch.
   ;;    (setq omnisharp-auto-complete-want-documentation nil)
   
+  ;; Activate imenu support so that sr-speedbar recognizes class and members
+  (setq-default omnisharp-imenu-support t)
+ 
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
