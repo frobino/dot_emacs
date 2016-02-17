@@ -1,4 +1,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; from https://github.com/nosami/omnisharp-demo/blob/master/init.el
+
+(defvar mswindows-p (string-match "windows" (symbol-name system-type)))
+(defvar linux-p (string-match "linux" (symbol-name system-type)))
+
+;; (when mswindows-p
+;;   (set-face-attribute 'default nil
+;;                       :family "Consolas" :height 100))
+;; (when linux-p
+;;   (set-face-attribute 'default nil
+;;                       :family "Ubuntu Mono" :height 100))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Macro to shoot out error in case a library is not available
 (defmacro with-library-for-c (symbol &rest body)
