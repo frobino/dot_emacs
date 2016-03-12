@@ -88,8 +88,10 @@
 
 (with-library-for-c company
   ;; (add-hook 'after-init-hook 'global-company-mode)
-  (add-hook 'c-mode-hook 'global-company-mode)
-  (add-hook 'c++-mode-hook 'global-company-mode)
+  ;; (add-hook 'c-mode-hook 'global-company-mode)
+  ;; (add-hook 'c++-mode-hook 'global-company-mode)
+  (add-hook 'c-mode-hook #'company-mode)
+  (add-hook 'c++-mode-hook #'company-mode)
   ;; NOTE: the following "delete" is not necessary if we target the CEDET semantic backend.
   ;; If we want to use the clang (or others backend) we have to delete company-semantic,
   ;; otherwise company-complete will use company-semantic instead of company-clang,
@@ -225,18 +227,22 @@
 ;; smartparens: minor mode that deals with parens pairs and tries to be smart about it
 
 (with-library-for-c smartparens
-  (setq sp-base-key-bindings 'paredit)
-  (setq sp-autoskip-closing-pair 'always)
-  (setq sp-hybrid-kill-entire-symbol nil)
-  ;; higlight couples of parentheses
-  (add-hook 'c-mode-hook 'show-smartparens-global-mode)
-  (add-hook 'c++-mode-hook 'show-smartparens-global-mode)
-  (add-hook 'c-mode-hook 'smartparens-global-mode)
-  (add-hook 'c++-mode-hook 'smartparens-global-mode)
+  (add-hook 'c-mode-hook #'smartparens-mode)
+  (add-hook 'c++-mode-hook #'smartparens-mode)
+
+  ;; (setq sp-base-key-bindings 'paredit)
+  ;; (setq sp-autoskip-closing-pair 'always)
+  ;; (setq sp-hybrid-kill-entire-symbol nil)
+  ;; ;; higlight couples of parentheses
+  ;; (add-hook 'c-mode-hook 'show-smartparens-global-mode)
+  ;; (add-hook 'c++-mode-hook 'show-smartparens-global-mode)
+  ;; (add-hook 'c-mode-hook 'smartparens-global-mode)
+  ;; (add-hook 'c++-mode-hook 'smartparens-global-mode)
+  
   )
 
 ;; NOTES: about smartparens
-;;
+;; - activated with # to avoid SP active in other buffers (not C)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

@@ -85,9 +85,6 @@ TODO list (X = done, ? = suspended, * = to be done):
 
      X smartparens-config
 
-     * NOTE: SP (smartparens) and company continue being alive if switching to another file.
-       SP must be closed using a hook too (https://github.com/bbatsov/prelude/issues/675)
-
      VHDL CODE MODE (emacs_vhdl_code_config.el):
 
      X ctags support:
