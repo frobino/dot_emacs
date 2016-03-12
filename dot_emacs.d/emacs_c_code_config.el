@@ -30,7 +30,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; EDE project management mode
+;; EDE project management mode (expand semantic backend)
 
 (with-library-for-c ede
   (add-hook 'c-mode-hook 'global-ede-mode)
@@ -45,14 +45,18 @@
 
 ;; NOTEs:
 ;;
-;; Use to load .el file containing "ede-cpp-root-project" and expand semantics parsing
-;; folders.
+;; The EDE project management mode is used to expand semantics parser (i.e. the folders that the semantics parser use to autocomplete). 
+;; To use the EDE project management mode, we have to create a cedet-projects.el (use the ede-new-project function)
+;; in the root folder of the project (usually the one containing Makefile, src/, header/ folders) and edit it for our project.
 ;;
-;; MUST BE ENABLED ON STARTUP TO EXPAND SEMANTICS PARSER!
+;; Then, we have to load cedet-projects.el file (containing "ede-cpp-root-project")
+;; so that we can expand semantics parsing folders (M-x load-file cedet-projects.el).
+;;
+;; global-ede-mode MUST BE ENABLED ON emacs STARTUP TO EXPAND SEMANTICS PARSER!
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Autocompletion with CEDET and semantics mode
+;; Autocompletion with CEDET and semantic mode as backend
 (with-library-for-c semantic
   (add-hook 'c-mode-hook 'global-semanticdb-minor-mode)
   (add-hook 'c++-mode-hook 'global-semanticdb-minor-mode)
@@ -80,7 +84,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Autocompletion with company mode using semantics as backend
+;; Autocompletion with company mode using clang as backend
 
 (with-library-for-c company
   ;; (add-hook 'after-init-hook 'global-company-mode)
@@ -115,8 +119,10 @@
   )
 )
 
-;; NOTES about company:
-;;
+;; NOTES about company with clang backend:
+;; - company is just a frontend which can use many different backend to autocomplete. In this case we use clang. 
+;; - autocomplete that we get from company-clang comes from the clang libraries.
+;; - to extend the company-clang autocomplete function, we can use the company-clang-project function, exactly as ede-new-project for CEDET-semantic
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
