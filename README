@@ -69,7 +69,7 @@ TODO list (X = done, ? = suspended, * = to be done):
      X yasnippet: function templates
        NOTE: use a shortcut such as for then tab
 
-     X compilation support:
+     * compilation support (to be improved):
        F5
 
      * debugging and gdb integration:
@@ -81,7 +81,12 @@ TODO list (X = done, ? = suspended, * = to be done):
 
      * check https://sites.google.com/site/taubkfet/tutorials/settingupac11developmentenvironmentonlinuxwithclangandemacs for flymake and other modes
 
+     * flycheck mode (install flycheck package, supports multiple languages)
+
      X smartparens-config
+
+     * NOTE: SP (smartparens) and company continue being alive if switching to another file.
+       SP must be closed using a hook too (https://github.com/bbatsov/prelude/issues/675)
 
      VHDL CODE MODE (emacs_vhdl_code_config.el):
 
@@ -98,9 +103,13 @@ TODO list (X = done, ? = suspended, * = to be done):
 
      C# CODE MODE
 
-     * evaluate csharp-mode
+     X evaluate csharp-mode
 
-     * look at http://www.emacswiki.org/emacs/CSharpMode and consider Flymake, RFringe, HideShow (to be extendend to C mode? ) and Omnisharp
+     * look at http://www.emacswiki.org/emacs/CSharpMode and consider:
+       - Flycheck (Flymake is obsolete)
+       - RFringe
+       X HideShow (Isn't this already included in C mode?)
+       X Omnisharp
 
 Main sources:
 
