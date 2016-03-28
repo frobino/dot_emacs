@@ -1,31 +1,32 @@
-TODO NEXT:
+## TODO NEXT:
+
      - understand why some of the autocomplete techniques give troubles
      - howto remove yas messages?
      - ctags better parser (make your own rules) to tag also constants, etc.
      - write a proper readme, describing steps for browsing c and vhdl code. 
 
-TODO list (X = done, ? = suspended, * = to be done):
+## TODO list (X = done, ? = suspended, * = to be done):
 
-     ALL CODE MODE (emacs_all_code_config.el):
+     ### ALL CODE MODE (emacs_all_code_config.el):
 
-     X undo-tree:
+     - [x] undo-tree:
        a MUST for all projects. Should be always active
        C-_ M-_ : do/undo
        C-x u   : open undo tree, navigate with arrows
 
-     X golden-ratio: automatically adjust window size
+     - [x] golden-ratio: automatically adjust window size
        NOTE: not added in .el file. If needed, install through pkg-mng and
        activate with M-x golden-ratio-mode
 
-     C CODE MODE (emacs_c_code_config.el):
+     ### C CODE MODE (emacs_c_code_config.el):
 
-     X sr_speedbar: speedbar in console (not in frame)
+     - [x] sr_speedbar: speedbar in console (not in frame)
        Main shortcuts:
        M-x sr-speedbar-toggle
        SPC open/close children of a node
        RET to open
 
-     X EDE: project manager, improve auto completion. Usually pre installed, no need for package install.
+     - [x] EDE: project manager, improve auto completion. Usually pre installed, no need for package install.
        EDE enables semantics to find sources & perform project level compilation.
        C-x C-e activates ede to load the cedet-project.el file
        Otherwise M-x load-file RET /path/to/myproject.el containing ede-cpp-root-project
@@ -33,7 +34,7 @@ TODO list (X = done, ? = suspended, * = to be done):
        NOTE: cedet-project.el does NOT need to be in a specific folder (e.g. .emacs.d/),
              but it can be in any folder, also the project folder!
              
-     X Semantics: auto completion #1 with active parser
+     - [x] Semantics: auto completion #1 with active parser
        It is already included in all new version of emacs. 
        As default, it parses and autocomplete only the current file. To specify where headers and other files are, 
        we must load an ede project first which specifies (at least) the root folder. <--- !
@@ -41,54 +42,56 @@ TODO list (X = done, ? = suspended, * = to be done):
        WIN: semantic-add-system-include "e:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/include"
        Look in semantic-dependency-system-include-path variable which path are included for the system libraries
        
-     X Company with different backends (semantic, clang, gtags,...): auto completion #2
+     - [x] Company with different backends (semantic, clang, gtags,...): auto completion #2
        semantic : ok if config semantic
        clang: requires clang installed in PATH
        ...
 
-     ? ECB: IDE 
+     - [ ] ECB: IDE 
        NOTE: I tried EDE but it seems slow and not fully supported on all platforms, 
        e.g. troubles with cygwin, see ecb FAQ. Suspended for the moment.        
 
-     X company-c-header: auto completion for headers
+     - [x] company-c-header: auto completion for headers
        NOTES: about company-c-header
        Use writing #include < then tab_
        Add library path with the following:
        (add-to-list 'company-c-headers-path-system "/usr/include/c++/4.8/")
 
-     * check global-semantic-idle-summary-mode
+     - [ ] check global-semantic-idle-summary-mode
 
-     * narrowing: making only a text portion in current buffer visible.
+     - [ ] **narrowing**: making only a text portion in current buffer visible.
      Narrowing is useful when you want to perform text editing on a small part of
      the buffer without affecting the others. For example, you want to delete
      all printf statements in current functions, using flush-lines command.
      Check also HideShow (see csharp)
 
-     * indentation:
+     - [ ] indentation:
 
-     X yasnippet: function templates
+     - [x] yasnippet: function templates
        NOTE: use a shortcut such as for then tab
 
-     * compilation support (to be improved):
+     - [ ] compilation support (to be improved):
        F5
 
-     * debugging and gdb integration:
+     - [ ] **debugging** and gdb integration:
 
-     X ggtags: source code navigation through TAGS
+     - [x] ggtags: **source code navigation** through TAGS
        Run gtags in folder, M-, and M-.
 
-     * helm-gtags: source code navigation through TAGS 
+     - [ ] helm-gtags: source code navigation through TAGS 
 
-     * check https://sites.google.com/site/taubkfet/tutorials/settingupac11developmentenvironmentonlinuxwithclangandemacs for flymake and other modes
+     - [ ] check https://sites.google.com/site/taubkfet/tutorials/settingupac11developmentenvironmentonlinuxwithclangandemacs for flymake and other modes
 
-     * flycheck mode (install flycheck package, supports multiple languages)
+     - [ ] **flycheck** mode (install flycheck package, supports multiple languages)
 
-     X smartparens-config
+     - [x] smartparens-config
 
-     VHDL CODE MODE (emacs_vhdl_code_config.el):
+     ### VHDL CODE MODE (emacs_vhdl_code_config.el):
 
-     X ctags support:
-     Similar to gtags for navigating C code, we use ctags (a.k.a. etags or Exuberant Ctags)
+     - [x] **autocomplete** is included in vhdl mode
+
+     - [x] ctags support:
+     Similar to gtags for **navigating C code**, we use ctags (a.k.a. etags or Exuberant Ctags)
      to create a TAGS file helping to browse our vhdl code. The .el file is not a library,
      but implements some useful functions. 
      Run the following command in the top folder containing your project: 
@@ -98,17 +101,17 @@ TODO list (X = done, ? = suspended, * = to be done):
      ctags-search (from the entity declaration) to find the place in code where it is istantiated (BOTTOM UP). Continue search trough ETAGS through M-,
      TODO: find a technique similar to occur (M-s o) instead of M-, continuously (or rgrep)
 
-     C# CODE MODE
+     ### C# CODE MODE
 
-     X evaluate csharp-mode
+     - [x] evaluate csharp-mode
 
      * look at http://www.emacswiki.org/emacs/CSharpMode and consider:
-       - Flycheck (Flymake is obsolete)
-       - RFringe
-       X HideShow (Isn't this already included in C mode?)
-       X Omnisharp
+       - [ ] Flycheck (Flymake is obsolete)
+       - [ ] RFringe
+       - [ ] HideShow (Isn't this already included in C mode?)
+       - [x] Omnisharp
 
-Main sources:
+## Main sources (references):
 
      * http://tuhdo.github.io/c-ide.html: tutorial with explanations
      * https://github.com/tuhdo/emacs-c-ide-demo: elisp files from previous link
