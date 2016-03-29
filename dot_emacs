@@ -37,7 +37,7 @@
 ;;
 ;; grep and find for Windows - uncomment the following:
 ;; (when (or (eq system-type 'windows-nt) (eq system-type 'msdos))
-;;    (setenv "PATH" (concat "C:\\GNU\\gnuwin32\\bin;" (getenv "PATH")))
+;;    (setenv "PATH" (concat "E:\\cygwin64\\bin;" (getenv "PATH")))
 ;;    (setq find-program "E:\\cygwin64\\bin\\find.exe"
 ;;          grep-program "E:\\cygwin64\\bin\\grep.exe"))
 ;;
