@@ -1,17 +1,4 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; from https://github.com/nosami/omnisharp-demo/blob/master/init.el
-
-(defvar mswindows-p (string-match "windows" (symbol-name system-type)))
-(defvar linux-p (string-match "linux" (symbol-name system-type)))
-
-;; (when mswindows-p
-;;   (set-face-attribute 'default nil
-;;                       :family "Consolas" :height 100))
-;; (when linux-p
-;;   (set-face-attribute 'default nil
-;;                       :family "Ubuntu Mono" :height 100))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Macro to shoot out error in case a library is not available
 (defmacro with-library-for-c (symbol &rest body)
@@ -101,9 +88,13 @@
 (with-library-for-c omnisharp
   (add-hook 'csharp-mode-hook 'omnisharp-mode)
   ;; Curl MUST be installed to run omnisharp server. 
-  (setq omnisharp--curl-executable-path "E:/Program Files/curl/curl.exe")
+  (when mswindows-p
+    (setq omnisharp--curl-executable-path "E:/Program Files/curl/curl.exe")
+    )
   ;; The omnisharp-server MUST be installed to use omnisharp-mode (https://github.com/OmniSharp/omnisharp-server)
-  (setq omnisharp-server-executable-path "E:/Program Files/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
+  (when mswindows-p
+    (setq omnisharp-server-executable-path "E:/Program Files/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
+    )
   ;; (defvar omnisharp-server-executable-path "E:/Program Files/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
   ;;'(omnisharp-server-executable-path "E:/Program Files/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
 

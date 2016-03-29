@@ -1,3 +1,17 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; from https://github.com/nosami/omnisharp-demo/blob/master/init.el
+
+(defvar mswindows-p (string-match "windows" (symbol-name system-type)))
+(defvar linux-p (string-match "linux" (symbol-name system-type)))
+
+;; (when mswindows-p
+;;   (set-face-attribute 'default nil
+;;                       :family "Consolas" :height 100))
+;; (when linux-p
+;;   (set-face-attribute 'default nil
+;;                       :family "Ubuntu Mono" :height 100))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,10 +51,11 @@
 ;;
 ;; grep and find for Windows - uncomment the following:
 ;; (when (or (eq system-type 'windows-nt) (eq system-type 'msdos))
-;;    (setenv "PATH" (concat "E:\\cygwin64\\bin;" (getenv "PATH")))
-;;    (setq find-program "E:\\cygwin64\\bin\\find.exe"
-;;          grep-program "E:\\cygwin64\\bin\\grep.exe"))
-;;
+(when mswindows-p
+   (setenv "PATH" (concat "E:\\cygwin64\\bin;" (getenv "PATH")))
+   (setq find-program "E:\\cygwin64\\bin\\find.exe"
+         grep-program "E:\\cygwin64\\bin\\grep.exe")
+   )
 ;; if the folder containing exe files contains spaces:
 ;; (setq find-program "C:\\\"Program Files (x86)\"\\GnuWin32\\bin\\find.exe"
 ;;  grep-program "C:\\\"Program Files (x86)\"\\GnuWin32\\bin\\grep.exe")
