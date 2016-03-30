@@ -1,3 +1,23 @@
+## PROJECT GOAL:
+
+Create a cross-OS .emacs file which enables to use the same editor (Emacs) with similar functionalities to browse/edit code written in different languages (mainly VHDL, C, C++, C#, Haskell).
+
+The main required functionalities are:
+1. Autocomplete variables names/functions
+2. Source code navigation:
+   * jump from function instantation(s) och function definition and viceversa 
+   * if possible, with SAME button combinations between the different languages (ex: M-, M-.)
+   * specify which Backend for each mode (gtags, etags, or... and why)
+3. Automatic indentation of code (t.ex. beautify)
+4. Narrowing 
+5. Flycheck and visualization of errors
+6. Debug possiblility (ex: gdb, gcc integration)
+   * compile
+   * breakpoint
+
+The look of the editor for all languages should be 2 columns, one for code, one for browsing with
+7. sr-speedbar with code browser
+
 ## TODO NEXT:
 
      - understand why some of the autocomplete techniques give troubles
@@ -26,11 +46,11 @@
        SPC open/close children of a node
        RET to open
 
-     - [x] EDE: project manager, improve auto completion. Usually pre installed, no need for package install.
+     - [x] EDE: project manager, used to expand semantics parser (i.e. the folders that the semantics parser use to autocomplete).
+       Usually pre installed, no need for package install.
        EDE enables semantics to find sources & perform project level compilation.
-       C-x C-e activates ede to load the cedet-project.el file
-       Otherwise M-x load-file RET /path/to/myproject.el containing ede-cpp-root-project
-       Required to be started from .emacs file to expand semantics parser!
+       To use the EDE project management mode, we have to create a cedet-projects.el (use the ede-new-project function) in the root folder of the project (usually the one containing Makefile, src/, header/ folders) and edit it for our project.
+       Then, we have to load cedet-projects.el file (containing "ede-cpp-root-project") so that we can expand semantics parsing folders (M-x load-file cedet-projects.el).
        NOTE: cedet-project.el does NOT need to be in a specific folder (e.g. .emacs.d/),
              but it can be in any folder, also the project folder!
              
