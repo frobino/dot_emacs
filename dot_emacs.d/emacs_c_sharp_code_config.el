@@ -1,17 +1,4 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; from https://github.com/nosami/omnisharp-demo/blob/master/init.el
-
-(defvar mswindows-p (string-match "windows" (symbol-name system-type)))
-(defvar linux-p (string-match "linux" (symbol-name system-type)))
-
-;; (when mswindows-p
-;;   (set-face-attribute 'default nil
-;;                       :family "Consolas" :height 100))
-;; (when linux-p
-;;   (set-face-attribute 'default nil
-;;                       :family "Ubuntu Mono" :height 100))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Macro to shoot out error in case a library is not available
 (defmacro with-library-for-c (symbol &rest body)
@@ -101,9 +88,13 @@
 (with-library-for-c omnisharp
   (add-hook 'csharp-mode-hook 'omnisharp-mode)
   ;; Curl MUST be installed to run omnisharp server. 
-  (setq omnisharp--curl-executable-path "E:/Program Files/curl/curl.exe")
+  (when mswindows-p
+    (setq omnisharp--curl-executable-path "E:/Program Files/curl/curl.exe")
+    )
   ;; The omnisharp-server MUST be installed to use omnisharp-mode (https://github.com/OmniSharp/omnisharp-server)
-  (setq omnisharp-server-executable-path "E:/Program Files/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
+  (when mswindows-p
+    (setq omnisharp-server-executable-path "E:/Program Files/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
+    )
   ;; (defvar omnisharp-server-executable-path "E:/Program Files/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
   ;;'(omnisharp-server-executable-path "E:/Program Files/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe")
 
@@ -119,6 +110,7 @@
   ;; The following is adapted from https://github.com/OmniSharp/omnisharp-emacs/blob/master/example-config-for-evil-mode.el
   (define-key omnisharp-mode-map (kbd "<backtab>") 'omnisharp-auto-complete)
   (define-key omnisharp-mode-map (kbd "<f12>") 'omnisharp-go-to-definition)
+  (define-key omnisharp-mode-map (kbd "<f7>") 'omnisharp-build-in-emacs)
   ;;    (define-key 'normal omnisharp-mode-map (kbd "g u") 'omnisharp-find-usages)
   ;;    (define-key 'normal omnisharp-mode-map (kbd "g I") 'omnisharp-find-implementations) ; g i is taken
   ;;    (define-key 'normal omnisharp-mode-map (kbd "g o") 'omnisharp-go-to-definition)
@@ -156,7 +148,35 @@
   
   ;; Activate imenu support so that sr-speedbar recognizes class and members
   (setq-default omnisharp-imenu-support t)
+  ;;
  
+  ;; Working windows omnisharp syntax checker for flycheck
+  ;; https://gist.github.com/jordonbiondo/10656469
+  ;; (flycheck-define-checker omnisharp
+  ;;   "Flycheck checker for omnisharp"
+  ;;   :command ("curl" 
+  ;;             "--silent" "-H"
+  ;;             "Content-type: application/json"
+  ;;             "--data-binary" 
+  ;;             (eval (concat "@" (omnisharp--write-json-params-to-tmp-file
+  ;;                                omnisharp--windows-curl-tmp-file-path
+  ;;                                (json-encode (omnisharp--get-common-params))))) ;; do the work here, and get the path
+  ;;             "http://localhost:2000/syntaxerrors")
+  ;;   :error-parser omnisharp--flycheck-error-parser-raw-json
+  ;;   :modes csharp-mode)
+  ;; (defun omnisharp--write-json-params-to-tmp-file
+  ;;     (target-path stuff-to-write-to-file)
+  ;;   "Deletes the file when done."
+  ;;   (with-temp-file target-path
+  ;;     (insert stuff-to-write-to-file)
+  ;;     target-path)) ;; return the target path
+  ;; ;; if syntax checker executable is not in PATH (http://www.flycheck.org/manual/latest/Configuring-checkers.html):
+  ;; (setq flycheck-omnisharp-executable "C:/Program Files (x86)/MSBuild/12.0/Bin/csc.exe")
+  ;; (setq flycheck-omnisharp-executable "C:/Windows/Microsoft.NET/Framework/v4.0.30319/csc.exe")
+  ;;
+
+  ;; (setq flycheck-csharp-omnisharp-codecheck-executable "C:/Program Files (x86)/MSBuild/12.0/Bin/csc.exe")
+  ;; (setq flycheck-csharp-omnisharp-codecheck-executable "C:/Windows/Microsoft.NET/Framework/v4.0.30319/csc.exe")
   )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
