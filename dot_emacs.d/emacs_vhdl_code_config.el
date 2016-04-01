@@ -24,7 +24,7 @@
 	   
 	   ;; The following code is taken from: 
 	   ;; URL: https://bitbucket.org/semente/ctags.el
-	   (defvar ctags-command "ctags -e -R ")
+	   (defvar ctags-command "ctags -e -R --languages=vhdl")
 
 	   (defun ctags ()
 	     (call-process-shell-command ctags-command nil "*Ctags*"))
