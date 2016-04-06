@@ -27,6 +27,27 @@
  ;; NOTE: down here modify height to increase size characters, depending on your screen resolution.
  '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 83 :width normal)))))
 
+(when mswindows-p
+ ;; 
+ ;; PRINT SUPPORT ON WINDOWS
+ ;;
+  (setenv "GS_LIB" "E:/Program Files/gs/gs9.15/lib;E:/Program Files/gs/gs9.15/fonts")
+  (setq ps-lpr-command "E:/Program Files/gs/gs9.15/bin/gswin64.exe")
+  (setq ps-lpr-switches '("-q" "-dNOPAUSE" "-dBATCH" "-sDEVICE=mswinpr2"))
+  (setq ps-printer-name t)
+
+;; avoid troubles with chinese/japanese char on Melpa inst packages Windows
+  (setq utf-translate-cjk-mode nil) ; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
+  (set-language-environment 'utf-8)
+  (set-keyboard-coding-system 'utf-8-mac) ; For old Carbon emacs on OS X only
+  (setq locale-coding-system 'utf-8)
+  (set-default-coding-systems 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (unless (eq system-type 'windows-nt)
+   (set-selection-coding-system 'utf-8))
+  (prefer-coding-system 'utf-8)
+)
+
  ;; MELPA packages 
 (require 'package)
 (add-to-list 'package-archives
