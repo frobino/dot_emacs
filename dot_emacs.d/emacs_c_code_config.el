@@ -56,14 +56,34 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Autocompletion with CEDET and semantic mode as backend
+;; Autocompletion backend #1: CEDET - semantic mode
 (with-library-for-c semantic
   (add-hook 'c-mode-hook 'global-semanticdb-minor-mode)
   (add-hook 'c++-mode-hook 'global-semanticdb-minor-mode)
-  (add-hook 'c-mode-hook 'global-semantic-idle-completions-mode)
-  (add-hook 'c++-mode-hook 'global-semantic-idle-completions-mode)
+  (add-hook 'c-mode-hook 'global-semantic-idle-scheduler-mode)
+  (add-hook 'c++-mode-hook 'global-semantic-idle-scheduler-mode)
+  ;; DANGER: idle completions mode shows completions in idle time automatically...
+  ;; Can this be dangerous and conflict with other autocomplete techniques?
+  ;; DEACTIVATED AT THE MOMENT. BEST IDEA IS TO USE COMPANY AS FRONTEND AND SWITCH BACKEND.
+  ;; (add-hook 'c-mode-hook 'global-semantic-idle-completions-mode)
+  ;; (add-hook 'c++-mode-hook 'global-semantic-idle-completions-mode)
+  
+  ;; The following two are helpful but if activated they give a weird "return" message in buffer sometimes
+  (add-hook 'c-mode-hook 'global-semantic-idle-summary-mode) 
+  (add-hook 'c++-mode-hook 'global-semantic-idle-summary-mode)
+
+  ;; The following is used to extend semantic to stdio functions, etc. (ex: printf, ...)
+  (when mswindows-p
+    (add-hook 'c-mode-hook (lambda () (semantic-add-system-include "e:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/include")))
+    (add-hook 'c++-mode-hook (lambda () (semantic-add-system-include "e:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/include")))
+  )
+  ;; What about? :
+  ;; '(semantic-c-dependency-system-include-path (quote ("/usr/include")))
+  
   (add-hook 'c-mode-hook 'semantic-mode)
-  (add-hook 'c++-mode-hook 'semantic-mode))
+  (add-hook 'c++-mode-hook 'semantic-mode) 
+  
+  )
 
 ;; Alternative way (without check):
 ;;
@@ -84,7 +104,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Autocompletion with company mode using clang as backend
+;; Autocompletion frontend: company mode with semantic as default backend,
+;;                          switch to clang backend with company-other-backend
 
 (with-library-for-c company
   ;; (add-hook 'after-init-hook 'global-company-mode)
@@ -92,18 +113,20 @@
   ;; (add-hook 'c++-mode-hook 'global-company-mode)
   (add-hook 'c-mode-hook #'company-mode)
   (add-hook 'c++-mode-hook #'company-mode)
+  
   ;; NOTE: the following "delete" is not necessary if we target the CEDET semantic backend.
   ;; If we want to use the clang (or others backend) we have to delete company-semantic,
   ;; otherwise company-complete will use company-semantic instead of company-clang,
   ;; because it has higher precedence in company-backends.
   ;; (delete 'company-semantic company-backends)
-  (add-hook 'c-mode-hook
-	    (lambda() (delete 'company-semantic company-backends))
-	    )
-  (add-hook 'c++-mode-hook
-	    (lambda() (delete 'company-semantic company-backends))
-	    )
-
+  ;; ---- ;;(add-hook 'c-mode-hook
+  ;; ---- ;;          (lambda() (delete 'company-semantic company-backends))
+  ;; ---- ;;          )
+  ;; ---- ;;(add-hook 'c++-mode-hook
+  ;; ---- ;;          (lambda() (delete 'company-semantic company-backends))
+  ;; ---- ;;          )
+  ;; ---- ;;
+  ;; ---- ;;
   
   (add-hook 'c-mode-hook
 	    (lambda() (define-key c-mode-map (kbd "<backtab>") 'company-complete))
@@ -184,6 +207,26 @@
 ;; sr_speedbar: speedbar in console (not in frame)
 
 (with-library-for-c sr-speedbar
+  ;;(add-hook 'c-mode-hook 'sr-speedbar)
+  ;;(add-hook 'c++-mode-hook 'global-semanticdb-minor-mode)
+
+  ;; (add-hook 'c-mode-hook (lambda () (require 'sr-speedbar) ))
+  ;; (add-hook 'c-mode-hook (lambda () (sr-speedbar-open) ))
+  ;; (add-hook 'c-mode-hook (lambda () (when window-system (sr-speedbar-open)) ))
+
+  ;; Whit the following it always open...
+  ;; (when window-system (sr-speedbar-open))
+
+  ;; (eval-after-load 'c-mode-hook '(sr-speedbar-open))
+
+  ;; (add-hook 'emacs-startup-hook (lambda () (sr-speedbar-open) ))
+
+  ;; (add-hook 'before-init-hook (lambda () (sr-speedbar-open) ))
+  
+  ;; (sr-speedbar-open)
+  ;; (windmove-default-keybindings)
+  ;; (golden-ratio-mode)
+  ;; 
   (setq speedbar-show-unknown-files t)
   )
 
