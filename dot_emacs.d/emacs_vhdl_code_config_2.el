@@ -18,17 +18,22 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (with-library-for-vhdl flycheck
-
-  ;; requires ghdl in PATH
-  (flycheck-define-checker vhdl-ghdl
-  "A VHDL syntax checker using ghdl."
-  :command ("ghdl" "-s" "--std=93" "--ieee=synopsys" "-fexplicit" source)
-  :error-patterns ((error line-start (file-name) ":" line ":" column ": " (message) line-end))
-  :modes (vhdl-mode))
   
-  ;; With this technique we do not have flycheck activated in other buffers!
-  ;; This is why we use 2 different vhdl_config.el
-  (add-hook 'vhdl-mode-hook 'flycheck-mode)
-  (add-hook 'vhdl-mode-hook (lambda () (flycheck-select-checker 'vhdl-ghdl)))
-
-  )
+  ;; activate flycheck with ghdl backend only if ghdl is in the path
+  (when (executable-find "ghdl")
+  
+    ;; requires ghdl in PATH
+    (flycheck-define-checker vhdl-ghdl
+    "A VHDL syntax checker using ghdl."
+    :command ("ghdl" "-s" "--std=93" "--ieee=synopsys" "-fexplicit" source)
+    :error-patterns ((error line-start (file-name) ":" line ":" column ": " (message) line-end))
+    :modes (vhdl-mode))
+    
+    ;; With this technique we do not have flycheck activated in other buffers!
+    ;; This is why we use 2 different vhdl_config.el
+    (add-hook 'vhdl-mode-hook 'flycheck-mode)
+    (add-hook 'vhdl-mode-hook (lambda () (flycheck-select-checker 'vhdl-ghdl)))
+    
+    ) ;; end when
+  
+  ) ;; end with-library-for-vhdl

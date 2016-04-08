@@ -113,6 +113,11 @@
 (with-library-for-vhdl sr-speedbar
   (sr-speedbar-open)
   (windmove-default-keybindings)
+  )
+
+;; golden ratio
+
+(with-library-for-vhdl golden-ratio
   (golden-ratio-mode)
   )
 
