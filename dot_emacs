@@ -99,6 +99,7 @@
 ;;
 
 (add-hook 'vhdl-mode-hook (lambda () (load "~/.emacs.d/emacs_vhdl_code_config")))
+(load "~/.emacs.d/emacs_vhdl_code_config_2")
 
 ;;
 ;; HASKELL code configuration

@@ -120,4 +120,25 @@
 ;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; flycheck vhdl with ghdl. MOVED TO emacs_vhdl_config_2.el
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; ---- ;; (with-library-for-vhdl flycheck
+;; ---- ;; 		       
+;; ---- ;; 
+;; ---- ;;   (flycheck-define-checker vhdl-ghdl
+;; ---- ;;   "A VHDL syntax checker using ghdl."
+;; ---- ;;   :command ("ghdl" "-s" "--std=93" "--ieee=synopsys" "-fexplicit" source)
+;; ---- ;;   :error-patterns ((error line-start (file-name) ":" line ":" column ": " (message) line-end))
+;; ---- ;;   :modes (vhdl-mode))
+;; ---- ;;    
+;; ---- ;;   ;; (flycheck-set-checker-executable 'vhdl-ghdl)                            
+;; ---- ;; 
+;; ---- ;;   ;; (setq flycheck-checkers 'vhdl-ghdl)
+;; ---- ;;     
+;; ---- ;;     
+;; ---- ;;   (add-hook 'vhdl-mode-hook 'global-flycheck-mode)
+;; ---- ;; 
+;; ---- ;;   ;; (flycheck-select-checker "vhdl-ghdl")
+;; ---- ;; 
+;; ---- ;;   )
