@@ -149,7 +149,7 @@
     ;; (interactive "sEnter project top folder: ")
     (interactive (list (read-directory-name "What directory? ")))
     (copy-file "~/.emacs.d/dot_dir_locals.el" prj_top_folder)
-    (rename-file (concat prj_top_folder "dot_dir_locals.el") ".dir.locals.el")
+    (rename-file (concat prj_top_folder "dot_dir_locals.el")  (concat prj_top_folder ".dir.locals.el"))
   )
 )
 
