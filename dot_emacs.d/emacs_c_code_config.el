@@ -128,11 +128,20 @@
   ;; ---- ;;
   ;; ---- ;;
   
+  ;; default company-complete using semantic
   (add-hook 'c-mode-hook
-	    (lambda() (define-key c-mode-map (kbd "<backtab>") 'company-complete))
+            (lambda() (define-key c-mode-map [(tab)] 'company-complete))
 	    )
   (add-hook 'c++-mode-hook
-	    (lambda() (define-key c++-mode-map (kbd "<backtab>") 'company-complete))
+            (lambda() (define-key c++-mode-map [(tab)] 'company-complete))
+            )
+
+  ;; select another backend for completion
+  (add-hook 'c-mode-hook
+            (lambda() (define-key c-mode-map (kbd "<backtab>") 'company-other-backend))
+            )
+  (add-hook 'c++-mode-hook
+            (lambda() (define-key c++-mode-map (kbd "<backtab>") 'company-other-backend))
 	    )
   
   (defun company-clang-project (prj_top_folder)
