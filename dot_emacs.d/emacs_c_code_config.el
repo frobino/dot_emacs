@@ -127,14 +127,17 @@
   ;; ---- ;;          )
   ;; ---- ;;
   ;; ---- ;;
-  
+
   ;; default company-complete using semantic
-  (add-hook 'c-mode-hook
-            (lambda() (define-key c-mode-map [(tab)] 'company-complete))
-	    )
-  (add-hook 'c++-mode-hook
-            (lambda() (define-key c++-mode-map [(tab)] 'company-complete))
-            )
+  ;;
+  ;; the following seems not needed, and it gives problems with tab indenting
+  ;;
+  ;; (add-hook 'c-mode-hook
+  ;;           (lambda() (define-key c-mode-map [(tab)] 'company-complete))
+  ;;           )
+  ;; (add-hook 'c++-mode-hook
+  ;;           (lambda() (define-key c++-mode-map [(tab)] 'company-complete))
+  ;;           )
 
   ;; select another backend for completion
   (add-hook 'c-mode-hook
@@ -142,14 +145,14 @@
             )
   (add-hook 'c++-mode-hook
             (lambda() (define-key c++-mode-map (kbd "<backtab>") 'company-other-backend))
-	    )
+            )
   
   (defun company-clang-project (prj_top_folder)
     ;; source: http://ergoemacs.org/emacs/elisp_basics.html
     ;; (interactive "sEnter project top folder: ")
     (interactive (list (read-directory-name "What directory? ")))
     (copy-file "~/.emacs.d/dot_dir_locals.el" prj_top_folder)
-    (rename-file (concat prj_top_folder "dot_dir_locals.el")  (concat prj_top_folder ".dir.locals.el"))
+    (rename-file (concat prj_top_folder "dot_dir_locals.el")  (concat prj_top_folder ".dir-locals.el"))
   )
 )
 
