@@ -87,7 +87,7 @@
 ;; Additonal configurations for omnisharp-mode 
 (with-library-for-c omnisharp
   (add-hook 'csharp-mode-hook 'omnisharp-mode)
-  ;; Curl MUST be installed to run omnisharp server. 
+  ;; Curl MUST be installed to run omnisharp server.
   (when mswindows-p
     (setq omnisharp--curl-executable-path "E:/Program Files/curl/curl.exe")
     )
@@ -145,11 +145,11 @@
   ;;    ;; Speed up auto-complete on mono drastically. This comes with the
   ;;    ;; downside that documentation is impossible to fetch.
   ;;    (setq omnisharp-auto-complete-want-documentation nil)
-  
+
   ;; Activate imenu support so that sr-speedbar recognizes class and members
   (setq-default omnisharp-imenu-support t)
   ;;
- 
+
   ;; Working windows omnisharp syntax checker for flycheck
   ;; https://gist.github.com/jordonbiondo/10656469
   ;; (flycheck-define-checker omnisharp
