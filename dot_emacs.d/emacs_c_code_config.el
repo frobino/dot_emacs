@@ -24,7 +24,8 @@
 ;; “user”: When you want to define your own style
 (setq
  c-default-style "linux" ;; set style to "linux"
-  )
+ c-basic-offset 2
+ )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
