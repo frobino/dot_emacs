@@ -37,3 +37,22 @@
     ) ;; end when
   
   ) ;; end with-library-for-vhdl
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; hs-minor-mode: fold and hide blocks
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(add-hook 'vhdl-mode-hook 'hs-minor-mode)
+
+;; NOTES about hs-minor-mode:
+;;
+;; Main shortcuts:
+;; C-c @ C-c Command: hs-toggle-hiding, Toggle hiding/showing of a block
+;; C-c @ C-l Command: hs-hide-level, Hide all block with indentation levels below this block
+;; C-c @ C-h Command: hs-hide-block, Select current block at point and hide it
+;; C-c @ C-s Command: hs-show-block, Select current block at point and show it.
+;; 
+;; C-c @ C-M-h Command: hs-hide-all, Hide all top level blocks, displaying only first and last lines.
+;; C-c @ C-M-s Command: hs-show-all, Show everything
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
