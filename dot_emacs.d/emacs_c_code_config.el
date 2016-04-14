@@ -147,6 +147,10 @@
   (add-hook 'c++-mode-hook
             (lambda() (define-key c++-mode-map (kbd "<backtab>") 'company-other-backend))
             )
+
+  ;; Avoid that we get prompted if .dir-local.el is safe everytime we open a new buffer
+  ;;
+  (put 'company-clang-arguments 'safe-local-variable (lambda (xx) t))
   
   (defun company-clang-project (prj_top_folder)
     ;; source: http://ergoemacs.org/emacs/elisp_basics.html
@@ -369,5 +373,29 @@
 ;;  ;; Non-nil means display source file containing the main routine at startup
 ;;  gdb-show-main t
 ;;  )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; flycheck: on the fly compilation and error visulization in buffer with clang backend
+;; Requires:
+;; - clang backend
+;; - a .dir-local.el (generated in company mode) to include "includes" and show errors
+;;   on real code
+
+(with-library-for-c flycheck
+  (add-hook 'c-mode-hook #'flycheck-mode)
+  (add-hook 'c++-mode-hook #'flycheck-mode)
+  ;; Avoid complainings on included Microsoft libraries (e.g. stdio.h, etc)
+  (when mswindows-p
+      (setq flycheck-clang-ms-extensions t)
+      )
+  
+  ;; Avoid that we get prompted if .dir-local.el is safe everytime we open a new buffer
+  ;;
+  ;; (put 'flycheck-clang-args 'safe-local-variable (lambda (xx) t))
+  ;; (put 'flycheck-include-path 'safe-local-variable (lambda (xx) t))
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
