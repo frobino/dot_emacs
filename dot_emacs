@@ -48,7 +48,7 @@
   (prefer-coding-system 'utf-8)
 )
 
- ;; MELPA packages 
+;; MELPA packages 
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa-stable" . "http://stable.melpa.org/packages/") t)
@@ -74,6 +74,12 @@
 ;; (when (or (eq system-type 'windows-nt) (eq system-type 'msdos))
 (when mswindows-p
    (setenv "PATH" (concat "E:\\cygwin64\\bin;" (getenv "PATH")))
+
+   ;; DANGER: the following line includes all tools in exec path!
+   ;;         I have inserted it because gdb requires it, but it can
+   ;;         give problems owerwrinting other .exe with same name !!!
+   (add-to-list 'exec-path "E:\\cygwin64\\bin")
+
    (setq find-program "E:\\cygwin64\\bin\\find.exe"
          grep-program "E:\\cygwin64\\bin\\grep.exe")
    )

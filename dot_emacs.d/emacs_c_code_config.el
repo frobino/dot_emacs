@@ -366,13 +366,16 @@
 
 ;; setup GDB
 
-;; (setq
-;;  ;; use gdb-many-windows by default
-;;  gdb-many-windows t
-;; 
-;;  ;; Non-nil means display source file containing the main routine at startup
-;;  gdb-show-main t
-;;  )
+(setq
+ ;; use gdb-many-windows by default
+ gdb-many-windows t
+
+ ;; Non-nil means display source file containing the main routine at startup
+ gdb-show-main t
+ )
+
+;; NOTES:
+;; start with M-x gdb, then write the name of the executable compiled with -g flag
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
