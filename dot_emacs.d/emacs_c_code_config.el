@@ -330,7 +330,10 @@
   ;; The main 2 functions
   (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
   (define-key ggtags-mode-map (kbd "M-.") 'ggtags-find-tag-dwim)
-
+  
+  ;; Always display full path in ggtags buffer
+  (setq ggtags-global-abbreviate-filename nil)
+  
   )
 
 ;; NOTES about ggtags:
