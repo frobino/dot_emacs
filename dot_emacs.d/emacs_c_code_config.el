@@ -379,6 +379,8 @@
 
 ;; NOTES:
 ;; start with M-x gdb, then write the name of the executable compiled with -g flag
+;; Example (without arguments): gdb -i=mi executablename
+;; Example (with arguments)   : gdb -i=mi --args executablename arg1 arg2 arg3
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
