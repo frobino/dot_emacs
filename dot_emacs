@@ -114,8 +114,13 @@
 (load "~/.emacs.d/emacs_haskell_code_config") ;; emacs_haskell_code_config.el
 
 ;;
-;; C sharp code configuration
+;; C sharp code configuration (requires server to VS)
 ;;
 
 ;;(load "~/.emacs.d/emacs_c_sharp_code_config") ;; emacs_c_code_config.el
 
+;;
+;; Java code configuration
+;;
+
+(load "~/.emacs.d/emacs_java_code_config") ;; emacs_java_config.el

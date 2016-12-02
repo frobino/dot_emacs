@@ -1,0 +1,7 @@
+
+- Download eclim_X.Y.Z.jar from http://eclim.org/install.html, and store in a temp folder.
+
+- Run "java -jar eclim_X.Y.Z.jar" and follow the installer instructions. When requested for the .vim folder, ignore.
+
+- eclim and eclimd will be installed in the eclipse installation folder (e.g. ~/Tools/eclipse/), where the eclipse executable can be found.
+
