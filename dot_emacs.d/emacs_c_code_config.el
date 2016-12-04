@@ -317,7 +317,7 @@
 (with-library-for-c ggtags
   (add-hook 'c-mode-common-hook
           (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+            (when (derived-mode-p 'c-mode 'c++-mode 'asm-mode)
               (ggtags-mode 1))))
 
   (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
@@ -345,10 +345,31 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Compilation
-(global-set-key (kbd "<f5>") (lambda ()
-                               (interactive)
-                               (setq-local compilation-read-command nil)
-                               (call-interactively 'compile)))
+;; (global-set-key (kbd "<f5>") (lambda ()
+;;                                (interactive)
+;;                                (setq-local compilation-read-command nil)
+;;                                (call-interactively 'compile)))
+;;
+
+;; The following 2 statements acivate support to build with F5 only in c and c++ mode
+(add-hook 'c-mode-hook
+	  (lambda() (define-key c-mode-map (kbd "<f5>") (lambda ()
+							  (interactive)
+							  (setq-local compilation-read-command nil)
+							  (call-interactively 'compile)
+							  )
+		      )
+	    )
+	  )
+(add-hook 'c++-mode-hook
+	  (lambda() (define-key c++-mode-map (kbd "<f5>") (lambda ()
+							    (interactive)
+							    (setq-local compilation-read-command nil)
+							    (call-interactively 'compile)
+							    )
+		      )
+	    )
+	  )
 
 
 ;; NOTES: about compilation
