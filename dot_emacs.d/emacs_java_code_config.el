@@ -13,6 +13,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (with-library-for-java eclim
+
+ ;; The followinf if is required to work with emacs executed from eclipse (eclim scenarios 2 and 3)
+ ;; WARNING: cl has been deprecated in recent version of emacs...
+ ;; https://github.com/senny/emacs-eclim/issues/95
+ (if (< emacs-major-version 25) ; this is the test, the "if"
+   (require 'cl)  ; This is the "then"
+   )
  
  (require 'eclim)
  (add-hook 'java-mode-hook 'eclim-mode)
@@ -45,7 +52,7 @@
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; 2] Configure company mode for autocomplete
  ;;
- ;; TOD: Company starts autocomplete after a few letters are inserted.
+ ;; TODO: Company starts autocomplete after a few letters are inserted.
  ;; Type M-x company-complete to initiate completion manually. Bind this command to a key combination of your choice.
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -78,7 +85,47 @@
  ;;   NOTE: it does not show all available methods of the class...
  ;; - Importing classes & organising imports: import any missing classes and re-organising the imports while it's at it when you call eclim-java-import-organize
  ;; - Correcting problems: nvokingeclim-problems-correct opens up another buffer in which you may preview the different suggestions and before applying them with the suggested fix's number (0-9)
- ;; -
+ ;; - ... see http://www.skybert.net/emacs/java/
+ 
+ ;; Use the followings as reference:
+ ;;   (add-hook 'c-mode-hook
+ ;;        (lambda() (define-key c-mode-map (kbd "<backtab>") 'company-other-backend))
+ ;;        )
+ ;;   (add-hook 'c-mode-hook
+ ;;        (lambda() (define-key c-mode-map [C-tab] 'moo-complete))
+ ;;        )
+
+ ;; TODO: check are the following already implemented?
+ ;; (define-key eclim-mode-map (kbd "C-c C-e s") 'eclim-java-method-signature-at-point)
+ ;; (define-key eclim-mode-map (kbd "C-c C-e f d") 'eclim-java-find-declaration)
+ ;; (define-key eclim-mode-map (kbd "C-c C-e f r") 'eclim-java-find-references)
+ ;; (define-key eclim-mode-map (kbd "C-c C-e f t") 'eclim-java-find-type)
+ ;; (define-key eclim-mode-map (kbd "C-c C-e f f") 'eclim-java-find-generic)
+ ;; (define-key eclim-mode-map (kbd "C-c C-e r") 'eclim-java-refactor-rename-symbol-at-point)
+ ;; (define-key eclim-mode-map (kbd "C-c C-e i") 'eclim-java-import-organize)
+ ;; (define-key eclim-mode-map (kbd "C-c C-e h") 'eclim-java-hierarchy)
+ ;; (define-key eclim-mode-map (kbd "C-c C-e z") 'eclim-java-implement)
+ ;; (define-key eclim-mode-map (kbd "C-c C-e d") 'eclim-java-doc-comment)
+ ;; (define-key eclim-mode-map (kbd "C-c C-e f s") 'eclim-java-format)
+ ;; (define-key eclim-mode-map (kbd "C-c C-e g") 'eclim-java-generate-getter-and-setter)
+ ;; (define-key eclim-mode-map (kbd "C-c C-e t") 'eclim-run-junit)
+ 
+ (add-hook 'java-mode-hook
+ 	   (lambda() (define-key java-mode-map (kbd "<f3>") 'eclim-java-find-declaration))
+ 	   )
+ (add-hook 'java-mode-hook
+ 	   (lambda() (define-key java-mode-map (kbd "<f4>") 'eclim-java-hierarchy))
+ 	   )
+ (add-hook 'java-mode-hook
+ 	   (lambda() (define-key java-mode-map (kbd "<f5>") 'eclim-java-find-references))
+ 	   )
+ (add-hook 'java-mode-hook
+ 	   (lambda() (define-key java-mode-map (kbd "<f1>") 'eclim-java-show-documentation-for-current-element))
+ 	   )
+ (add-hook 'java-mode-hook
+ 	   (lambda() (define-key java-mode-map [C-tab] 'eclim-complete))
+ 	   )
+ 
  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
