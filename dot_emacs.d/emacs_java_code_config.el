@@ -17,15 +17,25 @@
  ;; The followinf if is required to work with emacs executed from eclipse (eclim scenarios 2 and 3)
  ;; WARNING: cl has been deprecated in recent version of emacs...
  ;; https://github.com/senny/emacs-eclim/issues/95
- (if (< emacs-major-version 25) ; this is the test, the "if"
-   (require 'cl)  ; This is the "then"
-   )
- 
+ ;; (if (< emacs-major-version 25) ; this is the test, the "if"
+ ;;  (require 'cl)  ; This is the "then"
+ ;;  )
+
+ ;; DANGER:
+ ;; Since eclim 20161206.908 and yasnippet 20161211.1918 we are obliged to require cl to enable autocomplete.
+ ;; This is very strange and it is probably a bug in dependencies (in fact with eclim 201610 everything was working good without cl requirement)
+ (require 'cl)
+
+ ;; DANGER:
+ ;; The following function would be nice, but if activated some of the autocomplete functionalities get broken.
+ ;; For the moment we will keep it COMMENTED and we will accept the delays in autosave.
+ ;; (setq eclim-auto-save nil) ;; Avoid delays due to autosave
+
  (require 'eclim)
  (add-hook 'java-mode-hook 'eclim-mode)
  ;; If required to modify the server, this will have to be included
  (require 'eclimd)
- 
+
  (custom-set-variables
   '(eclim-eclipse-dirs '("~/Tools/eclipse"))
   '(eclim-executable "~/Tools/eclipse/eclim"))
@@ -33,7 +43,7 @@
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; 1] Displaying compilation error messages in the echo area
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  
+
  ;; (setq help-at-pt-display-when-idle t)
  ;; (setq help-at-pt-timer-delay 0.1)
  ;; (help-at-pt-set-timer)
@@ -71,9 +81,9 @@
 					       ;; 			   )
 					       ;; 	 )
 
-					       
+
 					       )
-			
+
 			)
 
  ;; TODO: Bind keys
@@ -86,7 +96,7 @@
  ;; - Importing classes & organising imports: import any missing classes and re-organising the imports while it's at it when you call eclim-java-import-organize
  ;; - Correcting problems: nvokingeclim-problems-correct opens up another buffer in which you may preview the different suggestions and before applying them with the suggested fix's number (0-9)
  ;; - ... see http://www.skybert.net/emacs/java/
- 
+
  ;; Use the followings as reference:
  ;;   (add-hook 'c-mode-hook
  ;;        (lambda() (define-key c-mode-map (kbd "<backtab>") 'company-other-backend))
@@ -109,7 +119,7 @@
  ;; (define-key eclim-mode-map (kbd "C-c C-e f s") 'eclim-java-format)
  ;; (define-key eclim-mode-map (kbd "C-c C-e g") 'eclim-java-generate-getter-and-setter)
  ;; (define-key eclim-mode-map (kbd "C-c C-e t") 'eclim-run-junit)
- 
+
  (add-hook 'java-mode-hook
  	   (lambda() (define-key java-mode-map (kbd "<f3>") 'eclim-java-find-declaration))
  	   )
@@ -125,7 +135,7 @@
  (add-hook 'java-mode-hook
  	   (lambda() (define-key java-mode-map [C-tab] 'eclim-complete))
  	   )
- 
+
  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
