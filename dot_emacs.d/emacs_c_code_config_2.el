@@ -70,3 +70,26 @@
   ;; - fly check
   ;; - outline classes/files: M-x lsp-ui-imenu
 )
+
+;; (with-library-for-c treemacs
+;;   (add-hook 'c-mode-hook 'treemacs)
+;;   (add-hook 'c++-mode-hook 'treemacs)
+;; )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; setup GDB
+
+(setq
+  ;; use gdb-many-windows by default
+  gdb-many-windows t
+  ;; Non-nil means display source file containing the main routine at startup
+  gdb-show-main t
+)
+
+;; NOTES:
+;; start with M-x gdb, then write the name of the executable compiled with -g flag
+;; Example (without arguments): gdb -i=mi executablename
+;; Example (with arguments)   : gdb -i=mi --args executablename arg1 arg2 arg3
