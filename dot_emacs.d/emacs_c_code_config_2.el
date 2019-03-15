@@ -33,9 +33,9 @@
 
 (with-library-for-c cquery
   ;; Setup cquery backend giving the executable path
-  (setq cquery-executable "/home/a502038/Tools_installation_files/cquery/build/release/bin/cquery")
-  (add-hook 'c-mode-hook 'lsp-cquery-enable)
-  (add-hook 'c++-mode-hook 'lsp-cquery-enable)
+  (setq cquery-executable "/home/osso/Tools/cquery/bin/cquery")
+  (add-hook 'c-mode-hook 'lsp)
+  (add-hook 'c++-mode-hook 'lsp)
   ;; In case you have subprojects (e.g. soundtouch), use the top one to find the compile_commands.json
   (with-eval-after-load 'projectile
     (setq projectile-project-root-files-top-down-recurring
@@ -65,7 +65,9 @@
 (with-library-for-c lsp-ui
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   ;; lsp-ui-mode includes lsp flycheck
-  (add-hook 'lsp-mode-hook 'flycheck-mode)
+  (with-library-for-c flycheck
+    (add-hook 'lsp-mode-hook 'flycheck-mode)
+  )
   ;; Functionalities:
   ;; - fly check
   ;; - outline classes/files: M-x lsp-ui-imenu
