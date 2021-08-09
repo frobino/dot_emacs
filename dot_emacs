@@ -123,4 +123,10 @@
 ;; Java code configuration
 ;;
 
-(load "~/.emacs.d/emacs_java_code_config") ;; emacs_java_config.el
+;; (load "~/.emacs.d/emacs_java_code_config") ;; emacs_java_config.el
+
+;;
+;; Go code configuration
+;;
+
+(load "~/.emacs.d/emacs_go_lsp_code_config") ;; emacs_java_config.el

@@ -102,4 +102,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-
+;; (with-library-for-all whitespace
+;;   (global-whitespace-mode)
+;;   (setq-default tab-width 2)
+;;   )
