@@ -7,7 +7,7 @@
          (require ',symbol)
          ,@body)
 
-     (error (message (format "ERROR: I guess we don't have %s available. Check emacs_c_code_config_2.el" ',symbol))
+     (error (message (format "ERROR: I guess we don't have %s available. Check emacs_c_lsp_clangd_code_config.el" ',symbol))
             nil)))
 (put 'with-library-for-c 'lisp-indent-function 1)
 
@@ -72,12 +72,25 @@
 ;;   ;; (cquery-inheritance-hierarchy t) ; derived hierarchy
 ;; )
 
-(with-library-for-c company-lsp
-  (push 'company-lsp company-backends)
+;; company-lsp is no longer supported since 2021
+;;
+;; (with-library-for-c company-lsp
+;;   (push 'company-lsp company-backends)
+;;   (add-hook 'c-mode-hook 'company-mode)
+;;   (add-hook 'c++-mode-hook 'company-mode)
+;;   ;; disable client-side cache and sorting because the server does a better job when autocompleting
+;;   (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
+;; )
+
+(with-library-for-c company
   (add-hook 'c-mode-hook 'company-mode)
   (add-hook 'c++-mode-hook 'company-mode)
-  ;; disable client-side cache and sorting because the server does a better job when autocompleting
-  (setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
+)
+
+(with-library-for-c lsp-treemacs
+  (add-hook 'c-mode-hook 'company-mode)
+  (add-hook 'c++-mode-hook 'company-mode)
+  (lsp-treemacs-sync-mode 1)
 )
 
 (with-library-for-c lsp-ui
