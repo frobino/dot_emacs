@@ -129,4 +129,10 @@
 ;; Go code configuration
 ;;
 
-(load "~/.emacs.d/emacs_go_lsp_code_config") ;; emacs_java_config.el
+(load "~/.emacs.d/emacs_go_lsp_code_config")
+
+;;
+;; Python code configuration
+;;
+
+(load "~/.emacs.d/emacs_python_lsp_code_config")

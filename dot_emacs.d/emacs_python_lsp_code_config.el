@@ -1,6 +1,6 @@
 ;; Requires:
 ;; - LSP: pip install python-language-server[all]
-;; - DAP: pip install "ptvsd>=4.2"
+;; - DAP: pip install debugpy
 
 ;; Macro to shoot out error in case a library is not available
 (defmacro with-library-for-python (symbol &rest body)
@@ -76,4 +76,22 @@
   gdb-many-windows t
   ;; Non-nil means display source file containing the main routine at startup
   gdb-show-main t
+)
+
+;; setup DAP (run M-x dap-debug)
+
+(with-library-for-python dap-mode
+  ;; Enabling only some features
+  (setq dap-auto-configure-features '(sessions locals controls tooltip))
+  (setq dap-python-debugger 'debugpy)
+  ;; (dap-python-debugger 'debugpy)
+  (require 'dap-python)
+  (dap-register-debug-template "My App"
+  (list :type "python"
+        :args "-a -b -c -f <filename>"
+        :cwd nil
+        :env '(("DEBUG" . "1"))
+        :target-module (expand-file-name "~/Projects/ProjectName/executable")
+        :request "launch"
+        :name "My App"))
 )
