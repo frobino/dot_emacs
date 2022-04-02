@@ -127,3 +127,61 @@
 ;; start with M-x gdb, then write the name of the executable compiled with -g flag
 ;; Example (without arguments): gdb -i=mi executablename
 ;; Example (with arguments)   : gdb -i=mi --args executablename arg1 arg2 arg3
+
+;; setup DAP
+;; NOTE: there are different dap servers for cpp:
+;; cpptools - uses https://github.com/microsoft/vscode-cpptools
+;; lldb - uses lldb-vscode, that usually get installed on debian togheter with lldb
+;;
+;; The example below setup dap mode with lldb-vscode.
+;; IT REQUIRES THAT THE USER CREATES A launch.json FILE IN THE PROJECT WORKSPACE
+;;
+;; Execute the debugger running: M-x dap-debug
+
+(with-library-for-c dap-mode
+  ;; Enabling only some features
+  (setq dap-auto-configure-features '(sessions locals controls tooltip))
+  (setq dap-lldb-debug-program '("/usr/bin/lldb-vscode-11"))
+  (require 'dap-lldb)
+  ;;  (require 'dap-cpptools)
+  ;;  (dap-register-debug-template "lldb-vscode"
+  ;;  (list :type "lldb-vscode"
+  ;;    :cwd "${workspaceFolder}"
+  ;;    :request "launch"
+  ;;    :program: "${workspaceFolder}/build/bin/serviceA"))
+
+  ;; For cpp-tools, create a file called launch.json similar to the following:
+  ;;
+  ;;{
+  ;;  "version": "0.2.0",
+  ;;  "configurations": [
+  ;;    {
+  ;;      "name": "Debug Emacs",
+  ;;      "type": "cppdbg",
+  ;;      "request": "launch",
+  ;;      "program": "${workspaceFolder}/src/emacs",
+  ;;      "args": ["-q"],
+  ;;      "stopAtEntry": false,
+  ;;      "cwd": "${workspaceFolder}",
+  ;;      "environment": [],
+  ;;      "externalConsole": false,
+  ;;      "MIMode": "gdb"
+  ;;    }
+  ;;  ]
+  ;;}
+  
+  ;; For lldb, create a file called launch.json similar to the following:
+  ;;
+  ;;{
+  ;;  "configurations": [
+  ;;    {
+  ;;      "type": "lldb-vscode",
+  ;;      "request": "launch",
+  ;;      "name": "C++ LLDB json default",
+  ;;      "program": "${workspaceFolder}/debug/${fileBasenameNoExtension}",
+  ;;      "cwd": "${workspaceFolder}",
+  ;;      "args": [],
+  ;;    }
+  ;;  ]
+  ;;}  
+)
