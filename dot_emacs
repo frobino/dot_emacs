@@ -98,20 +98,21 @@
 ;; C code configuration
 ;;
 
-(load "~/.emacs.d/emacs_c_code_config") ;; emacs_c_code_config.el
+(add-hook 'c-mode-hook (lambda () (load "~/.emacs.d/emacs_c_lsp_clangd_code_config")))
+(add-hook 'c++-mode-hook (lambda () (load "~/.emacs.d/emacs_c_lsp_clangd_code_config")))
 
 ;;
 ;; VHDL code configuration
 ;;
 
 (add-hook 'vhdl-mode-hook (lambda () (load "~/.emacs.d/emacs_vhdl_code_config")))
-(load "~/.emacs.d/emacs_vhdl_code_config_2")
+(add-hook 'vhdl-mode-hook (lambda () (load "~/.emacs.d/emacs_vhdl_code_config_2")))
 
 ;;
 ;; HASKELL code configuration
 ;;
 
-(load "~/.emacs.d/emacs_haskell_code_config") ;; emacs_haskell_code_config.el
+;;(load "~/.emacs.d/emacs_haskell_code_config") ;; emacs_haskell_code_config.el
 
 ;;
 ;; C sharp code configuration (requires server to VS)
@@ -129,13 +130,13 @@
 ;; Go code configuration
 ;;
 
-(load "~/.emacs.d/emacs_go_lsp_code_config")
+(add-hook 'go-mode-hook (lambda () (load "~/.emacs.d/emacs_go_lsp_code_config")))
 
 ;;
 ;; Python code configuration
 ;;
 
-(load "~/.emacs.d/emacs_python_lsp_code_config")
+(add-hook 'python-mode-hook (lambda () (load "~/.emacs.d/emacs_python_lsp_code_config")))
 
 ;;
 ;; Rust code configuration
