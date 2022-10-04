@@ -142,3 +142,9 @@
 ;; Rust code configuration
 
 (add-hook 'rust-mode-hook (lambda () (load "~/.emacs.d/emacs_rust_lsp_code_config")))
+
+;;
+;; JS/TS code configuration
+
+(add-hook 'js-mode-hook (lambda () (load "~/.emacs.d/emacs_jsts_lsp_code_config")))
+(add-hook 'typescript-mode-hook (lambda () (load "~/.emacs.d/emacs_jsts_lsp_code_config")))
